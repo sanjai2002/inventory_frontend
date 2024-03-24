@@ -1,0 +1,63 @@
+  .signupall{
+      background:#DFF5FF;
+      /* background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 100%); */
+    }
+  .signupall{
+    display: flex;
+    justify-content:space-around;
+  }
+  .loginimage{
+    margin-top: 7%;
+  }
+  .loginimage img{
+    width: 500px;
+  }
+
+  .containersignup{
+
+    display:flex !important;
+    flex-direction: column;
+    max-width: 300vw;
+    width: 100%;
+    margin-top:10px;
+    margin-right: 20px;
+    
+  }
+  .containersignup > form {
+    width: 80%;
+    border:1px solid #dfdfdf;
+    padding:25px;
+    margin-left: 100px;
+    border-radius: 5px;
+    background: #fff;
+  }
+  pre {
+    width: 80%;
+    color: #fff;
+    font-size: larger;
+  }
+  /* button {
+    background: #5356FF !important;
+  } */
+
+ p{
+    color:red
+  }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+h4{
+    text-align: center;
+    padding-top: 5px;
+    color: red;
+    font-size: 15px;
+}
+.signupmsg h4{
+  color: Red;
+
+}
+
+

@@ -1,0 +1,13 @@
+.Superproduct table thead tr {
+    background-color: rgb(251, 109, 72);
+    color: #ffffff;
+    text-align: left;
+}
+
+.Superproduct{
+    display: flex;
+}
+.Superproduct img{
+    width: 300px;
+    margin-left: 20px;
+}

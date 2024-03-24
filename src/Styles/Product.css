@@ -1,0 +1,17 @@
+.blink{
+    animation: blinkani 1s infinite ;
+}
+@keyframes blinkani {
+    0% { background-color: #FB6D48; } /* Fully opaque */
+    50% { background-color: transparent; } /* Fully transparent */
+    100% { background-color: #FB6D48; } /* Back to fully opaque */
+  }
+
+.blinkDate{
+    animation: blinkanimation 1s infinite ;
+}
+@keyframes blinkanimation {
+    0% { background-color: #9BCF53; } /* Fully opaque */
+    50% { background-color: transparent; } /* Fully transparent */
+    100% { background-color: #9BCF53; } /* Back to fully opaque */
+  }

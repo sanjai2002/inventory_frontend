@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Set a background color and font for the entire page */
+  body {
+    background-color: #f7f7f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Style the bill container */
+  .bill-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Style the header and sections of the bill */
+  .shop-details, .customer-details, .bill-details {
+    padding: 20px;
+    width: 1000px;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Style the headings */
+  h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  /* Style the paragraphs and table */
+  .Bill p, table {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Style the table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .Bill th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .Bill th {
+    background-color: #f4f4f4;
+  }
+
+  /* Style the total section */
+  .total {
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .total-amount {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .CustomerorderBill{
+   display: flex;
+   flex-direction: row;
+   gap: 50px;
+  }
+

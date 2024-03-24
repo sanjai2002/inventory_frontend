@@ -1,0 +1,60 @@
+.signinall{
+    background:#DFF5FF; 
+    /* background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 100%); */
+  }
+  .container {
+    display:flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 500px;
+    width: 80vw;
+    margin: auto;
+  }
+
+  .container > form {
+    width: 75%;
+    border:1px solid #dfdfdf;
+    padding:20px;
+    border-radius: 5px;
+    background: #fff;
+  }
+  pre {
+    width: 70%;
+    color: #fff;
+    font-size: larger;
+  }
+  /* button {
+    background: #222ba9 !important;
+  } */
+  
+ p{
+    color:red
+  }
+  .loginimage{
+    margin-top: 7%;
+    margin-left: 5%;
+  }
+  .loginimage img{
+    width: 600px;
+  }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.link{
+    text-align: center;
+
+}
+.signinall{
+    display: flex;
+    justify-content:space-around;
+  }
+  .signupmsg h4{
+    color: Red;
+  
+  }
