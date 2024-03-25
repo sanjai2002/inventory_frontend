@@ -11,6 +11,29 @@ function Viewsuperproduct() {
             .catch(err => console.log(err));
     }, [])
 
+    const Removeproduct = (superProductId) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axios.delete('https://localhost:7282/api/Superproduct/RemovesuperProduct/' + superProductId)
+              .then(res => {
+              }).catch(err => console.log(err), []);
+            Swal.fire({
+              title: "Deleted!",
+              text: "product has been deleted.",
+              icon: "success"
+            });
+          }
+        });
+      }
+
     return (
         <div className="Superproduct">
         <table className="table table " >
@@ -26,6 +49,9 @@ function Viewsuperproduct() {
                     <th>sellingPrice</th>
                     <th>expiryDate</th>
                     <th>stock</th>
+                    <th>Update </th>
+                    <th>Delete </th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -42,8 +68,14 @@ function Viewsuperproduct() {
                             <td>{d.sellingPrice}</td>
                             <td>{d.expiryDate}</td>
                             <td>{d.stock}</td>
+                            
                             <td>
-                            </td>
+                  <Link to={`/UpdateSuperproduct/${d.superProductId}`} className="btn btn-primary m-2">Update</Link>
+                  
+                </td>
+                <td>
+                <button onClick={e => Removeproduct(d.superProductId)} className="btn btn-danger">Delete</button>
+                </td>
                         </tr>
                     ))
                 }
@@ -52,5 +84,4 @@ function Viewsuperproduct() {
         </div>
     )
 }
-
 export default Viewsuperproduct;

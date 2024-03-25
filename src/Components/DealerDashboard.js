@@ -37,11 +37,9 @@ function Logout(){
 })
    .catch(err => console.log(err));
   },[])
-
   //id store in cookies:
   Cookies.set('retailerid', retailerid, { expires: 7 });
   const Id=Cookies.get("retailerid");
-
     return(
         <>
   <div className='Dealerdashboard'>
@@ -63,33 +61,21 @@ function Logout(){
     <i class="fa fa-star-o" aria-hidden="true"></i>
     Starred
   </a>
-  <a href="javascript:void(0)">
-    <i class="fa fa-trash-o" aria-hidden="true"></i>
-    Trash
-  </a>
-  <a href="javascript:void(0)">
-    <i class="fa fa-trash-o" aria-hidden="true"></i>
-    Trash
-  </a>
   <div class="nav-item dropdown profile ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src={profile} ></img>{name}
-          
+          <img src={profile} ></img>{name}  
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">{name}</a>
-          <a class="dropdown-item" href="#">{Email}</a>
-          
+          <a class="dropdown-item" href="#">{Email}</a>      
           {/* <a class="dropdown-item" href={'/updateuser'}>Update details</a>
           <a class="dropdown-item" onClick={()=>deleteuser(Id)}>Delete Account</a> */}
           <a class="dropdown-item" href="#" onClick={Logout}>Logout</a>
         </div>
       </div> 
 </aside>
-
 </div>
       </>
     )
 }
-
 export default DealerDashboard;

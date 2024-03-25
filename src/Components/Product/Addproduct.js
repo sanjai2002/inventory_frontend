@@ -32,24 +32,18 @@ const handleSubmit = (event) => {
       if (result.isConfirmed) {
       axios.post('https://localhost:7282/api/Product/Addproducts', values)
         .then(res => {
-            console.log(res);
-     
+            console.log(res); 
         })
         .catch(err => console.log(err));
         Swal.fire({
           title: "Product Added Successfully!",
-  
           icon: "success"
         });
       }
     });
-
     setTimeout(() => {
       navigate('/Viewproduct');
-    }, 3000); 
-    
- 
-        
+    }, 1000);          
 }
 
 const handleImages=(e)=>{

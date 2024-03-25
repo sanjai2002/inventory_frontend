@@ -19,12 +19,11 @@ function Navbar(){
         Cookies.remove('Role');
         navigate('/');
     }
-
     const [name,setName] = useState();
     const[Location,Setlocation]=useState();
     const[Shopname,Setshopname]=useState();
+    
     const[retailerid,setretailerid]=useState(Cookies.get("retailerid"));
-
     useEffect(()=>{
       axios.post('https://localhost:7282/api/Retailer/FindEmail',{
         email:Email
@@ -36,9 +35,8 @@ function Navbar(){
     setName(res.data.name);
     setretailerid(res.data.retailerid);
 })
-     .catch(err => console.log(err));
+  .catch(err => console.log(err));
     },[])
-
     //id store in cookies:
     Cookies.set('retailerid', retailerid, { expires: 7 });
     const Id=Cookies.get("retailerid");
@@ -69,55 +67,46 @@ const deleteuser = (Id) => {
     return(
         <>
       <aside>
-  <p> Menu </p>
+  <p style={{color:"White"}}> {Shopname}  </p>
   <a href="/Viewproduct">
     <i class="fa fa-user-o" aria-hidden="true"></i>
-    products
+    View products
   </a>
   <a href="/Addproduct">
     <i class="fa fa-user-o" aria-hidden="true"></i>
-    Addproduct
+    Add Products
+  </a>
+  <a href="/CustomerOrder">
+    Generate Bill
   </a>
 
   <a href="/Orderhistory">
-    <i class="fa fa-star-o" aria-hidden="true"></i>
-    View orders
+   Sales History
   </a>
   <a href="/SuperProduct">
-    <i class="fa fa-clone" aria-hidden="true"></i>
    Purchase
   </a>
-  <a href="/CustomerOrder">
-    <i class="fa fa-laptop" aria-hidden="true"></i>
-    Customer order
+  <a href="/Purchasehistory">
+  Purchase Details
   </a>
-  <a href="javascript:void(0)">
-    <i class="fa fa-trash-o" aria-hidden="true"></i>
-    Trash
-  </a>
-
+ <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
   <div class="nav-item dropdown profile ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src={profile} ></img>{name}
-          
+          <img src={profile} ></img>&nbsp; &nbsp;{name}    
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">{name}</a>
           <a class="dropdown-item" href="#">{Email}</a>
-          
-          {/* <a class="dropdown-item" href={'/updateuser'}>Update details</a>
-          <a class="dropdown-item" onClick={()=>deleteuser(Id)}>Delete Account</a> */}
           <a class="dropdown-item" href="#" onClick={Logout}>Logout</a>
         </div>
       </div>   
 </aside>
-<div className='Shopdetails'>
-  <h1 >Shopname:{Shopname}   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Location:{Location}</h1> 
-</div>
     </>
-      
+    
     )
 }
+
+
 
 
 export default Navbar;

@@ -90,7 +90,6 @@ function Signup() {
 
     if (!values.mobilenumber) {
       errors.mobilenumber = "Mobile number is required!";
-
     }else if(values.mobilenumber.length<10){
       errors.mobilenumber = " Please enter valid Mobile number ";
     }
@@ -113,16 +112,15 @@ function Signup() {
     if (!values.gstNumber) {
       errors.gstNumber = "GstNumber is Required!";
     }
-    else if(!values.gstNumber.length>12){
+    else if(values.gstNumber.length>12){
       errors.gstNumber = "Please enter valid Gst Number!";
     }
-    else if(!values.gstNumber.length<12){
+    else if(values.gstNumber.length<12){
       errors.gstNumber = "Please enter valid Gst Number!";
     }
     return errors;
   };
-
-  return (
+  return (  
     <div className="signupall">
     <div className="loginimage">
      <img src={Inventory} ></img>

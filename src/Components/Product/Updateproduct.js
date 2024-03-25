@@ -17,6 +17,7 @@ function Updateproduct() {
     stock:'',
     retailerid:Cookies.get("retailerid")
 })
+
 const { id } = useParams();
 useEffect(() => {
     axios.get('https://localhost:7282/api/Product/GetByproduct/'+ id)
@@ -137,7 +138,7 @@ const handleImages=(e)=>{
           </div>    
           <button class="btn btn-primary" onClick={handleSubmit}>Update the Product</button>
         </div>
-      {/* ... rest of your form fields */}
+  
       
     </form>
   </div>

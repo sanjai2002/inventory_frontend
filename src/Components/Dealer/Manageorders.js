@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import orderimages  from '../../Images/Order food-amico.png'
+import Manageorder  from '../../Images/Order ahead-rafiki.png'
 function Manageorders() {
     const [data, setData] = useState([])
     const navigate = useNavigate();
@@ -11,7 +11,6 @@ function Manageorders() {
             .then(res => setData(res.data))
             .catch(err => console.log(err));
     }, [])
-
     return (
         <div className="Superproduct">
         <div>
@@ -48,7 +47,7 @@ function Manageorders() {
         </table>
         </div>
         <div>
-        <img src={orderimages}></img>
+        <img src={Manageorder}></img>
         </div>
         </div>
     )

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import superproduct from '../../Images/1600x960_949963-nestle-01.jpg'
+import Swal from "sweetalert2";
 function Addsuperproduct() {
   const [values, setValues] = useState({
     productcode: '',
@@ -15,14 +17,41 @@ function Addsuperproduct() {
     stock:'',  
 })
 const navigate = useNavigate();
+// const handleSubmit = (event) => {
+//     event.preventDefault();
+//     axios.post('https://localhost:7282/api/Superproduct/AddSuperproduct', values)
+//         .then(res => {
+//             console.log(res);     
+//         })
+//         .catch(err => console.log(err));
+//         window.alert(" ProductAddded");
+// }
+
 const handleSubmit = (event) => {
-    event.preventDefault();
+  event.preventDefault();
+  Swal.fire({
+    title: "Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Add  it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
     axios.post('https://localhost:7282/api/Superproduct/AddSuperproduct', values)
-        .then(res => {
-            console.log(res);     
-        })
-        .catch(err => console.log(err));
-        window.alert(" ProductAddded");
+      .then(res => {
+          console.log(res); 
+      })
+      .catch(err => console.log(err));
+      Swal.fire({
+        title: "Product Added Successfully!",
+        icon: "success"
+      });
+    }
+  });
+  setTimeout(() => {
+    navigate('/Viewsuperproduct');
+  }, 1000);          
 }
 
 const handleImages=(e)=>{
@@ -39,7 +68,7 @@ const handleImages=(e)=>{
 }
 
   return (
-    <div className="Retailerpage">
+    <div className="Superproduct">
     <div className="container">
       <form  onSubmit={handleSubmit}>
         <h1>Add Stock</h1>
@@ -92,7 +121,6 @@ const handleImages=(e)=>{
               <input type="Date" placeholder="expiryDate"onChange={e => setValues({ ...values, expiryDate: e.target.value })} />
            </div>
           </div>
-
           <div className="field">
             <label>Stock</label>
             <div class="ui right labeled input">
@@ -103,7 +131,11 @@ const handleImages=(e)=>{
         </div>
       </form>
     </div>
-    </div>
+     <div className="Addproductimage">
+     {values.productImage==""?<img src={superproduct} />:<img src={"data:image/gif;base64,"+values.productImage} />}
+     </div>
+     </div>
+    
   );
 }
 

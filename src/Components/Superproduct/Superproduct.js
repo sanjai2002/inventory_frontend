@@ -23,6 +23,7 @@ function SuperProduct() {
     };
     return (
 <>
+
 <input type="text" class="form-control mr-sm-2" placeholder="Search..." value={searchQuery} onChange={handleInputChange} />
 <div class="container-fluid" id="SuperProducts">
 <div class="d-flex flex-wrap">
@@ -60,7 +61,5 @@ function SuperProduct() {
 </>
     )
 }
-
-
 export default SuperProduct;
 

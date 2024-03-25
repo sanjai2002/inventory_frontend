@@ -74,4 +74,7 @@
    flex-direction: row;
    gap: 50px;
   }
+#Bill p{
+  color: black;
+}
 

@@ -7,9 +7,9 @@ import Swal from "sweetalert2";
 import '../../Styles/Dealer.css'
 function Viewproduct() {
   const [data, setData] = useState([])
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
-
+//Expiry date 
 let today = new Date();
 today.setDate(today.getDate() + 5); // Add 5 days
 let month = String(today.getMonth() + 1).padStart(2, '0');
@@ -17,7 +17,13 @@ let day = String(today.getDate()).padStart(2, '0');
 let dateString = today.getFullYear() + '-' + month + '-' + day;
 console.log(dateString);
 
-
+let today1 = new Date();
+today1.setDate(today1.getDate() + 4); // Add 5 days
+let month1 = String(today1.getMonth() + 1).padStart(2, '0');
+let day1 = String(today1.getDate()).padStart(2, '0');
+let dateString1 = today1.getFullYear() + '-' + month1 + '-' + day1;
+console.log(dateString1);
+ 
 
   useEffect(() => {
     axios.post('https://localhost:7282/api/Product/FindRetailer', {
@@ -53,18 +59,20 @@ console.log(dateString);
     });
   }
   return (
-    
+   
+
     <table className="table table-striped">
+      
       <thead>
         <tr>
         {/* <h1>{date}</h1> */}
-          <th>ProductsId</th>
-          <th>Productcode</th>
-          <th>ProductCategory</th>
-          <th>ProductName</th>
-          <th>BuyingPrice</th>
-          <th>SellingPrice</th>
-          <th>ExpiryDate</th>
+          <th>Products Id</th>
+          <th>Product code</th>
+          <th>Product Category</th>
+          <th>Product Name</th>
+          <th>Buying Price</th>
+          <th>Selling Price</th>
+          <th>Expiry Date</th>
           <th>Stock</th>
           <th>Update  Delete</th>
         </tr>
@@ -72,7 +80,7 @@ console.log(dateString);
       <tbody>
         {
           data.map((d, i) => (
-            d.stock == 0 ?  <>
+            d.stock == 0 ? <>
               <tr key={i} className="blink">
                 <td>{d.productsId}</td>
                 <td>{d.productcode}</td>
@@ -82,14 +90,13 @@ console.log(dateString);
                 <td>{d.sellingPrice}</td>
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
-
                 <td>
                   <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Edit</Link>
                   <button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Delete</button>
                 </td>
               </tr>
             </> :
-             d.expiryDate == dateString? <>
+             d.expiryDate == dateString ||d.expiryDate == dateString1? <>
               <tr key={i} className="blinkDate">
                 <td>{d.productsId}</td>
                 <td>{d.productcode}</td>
@@ -99,7 +106,6 @@ console.log(dateString);
                 <td>{d.sellingPrice}</td>
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
-
                 <td>
                   <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Edit</Link>
                   <button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Delete</button>
@@ -131,6 +137,7 @@ console.log(dateString);
         }
       </tbody>
     </table>
+ 
   )
 }
 

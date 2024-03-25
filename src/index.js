@@ -18,12 +18,13 @@ import Updateproduct from './Components/Product/Updateproduct';
 
 import Superproduct from './Components/Superproduct/Superproduct';
 import Purchase from './Components/Purchase/Purchase'
+import Purchasehistory from './Components/Purchase/Purchasehistory'
 
 import Addsuperproduct from './Components/Superproduct/Addsuperproduct'
 import Viewsuperproduct from './Components/Superproduct/Viewsuperproduct';
 import Manageorders from './Components/Dealer/Manageorders';
 import CustomerOrder from './Components/Customer/Customerorder'
-
+import UpdateSuperproduct from './Components/Superproduct/Updateuperproduct'
 
 import Orderhistory from './Components/Retailers/Orderhistory'
 
@@ -47,14 +48,18 @@ root.render(
     <Route path='/Orderhistory' element={< Orderhistory/>}></Route>
     <Route path='/Superproduct' element={<Superproduct />}></Route>
     <Route path='/Purchase/:id' element={< Purchase/>}></Route>
+    <Route path='/Purchasehistory' element={< Purchasehistory/>}></Route>
 
+
+   
+   
     </Route>
     <Route element={<Adminrouting/>}>
     <Route path='/Addsuperproduct' element={<Addsuperproduct/>}></Route>
     <Route path='/Viewsuperproduct' element={<Viewsuperproduct/>}></Route>
     <Route path='/Viewsuperproduct' element={<Viewsuperproduct/>}></Route>
     <Route path='/Manageorders' element={<Manageorders/>}></Route>
-
+    <Route path='/UpdateSuperproduct/:id' element={<UpdateSuperproduct/>}></Route>
     </Route>
   </Routes>
   </BrowserRouter>
