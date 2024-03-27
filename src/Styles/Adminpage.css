@@ -3,7 +3,7 @@ aside {
     color: #fff;
     width: 250px;
     padding-left: 20px;
-    height: 120vh;
+    height: 150vh;
     background-image: linear-gradient(30deg , #0048bd, #44a7fd);
     border-top-right-radius: 80px;
   }  
@@ -53,6 +53,7 @@ aside {
     width: 35px;
     border-top-right-radius: 18px;
     box-shadow: 0 -20px 0 0 #fff;
+    text-decoration:none;
   }
   
   aside p {
@@ -135,3 +136,9 @@ aside {
 .Shopdetails h1{
   font-size: 20px;
 }
+
+.no-underline {
+  text-decoration:none;
+}
+
+

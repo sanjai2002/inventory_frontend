@@ -61,9 +61,10 @@ useEffect(() => {
         }
       });
       setTimeout(() => {
-        navigate('/Viewproduct');
-      },3000);          
+        navigate('/Purchasehistory');
+      },4000);          
   }
+  
     function Increment(){
         if(count<data.stock)
           return setcount(count+1);
@@ -74,7 +75,6 @@ useEffect(() => {
     }
     return(
 <>
-
 <div className="card-purchase">
   <div className="card-image">
     <img src={"data:image/png;base64," + data.productImage} alt="Product" />

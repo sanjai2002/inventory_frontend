@@ -45,22 +45,16 @@ function Logout(){
   <div className='Dealerdashboard'>
   <aside className='Dealersidebar'>
   <p> </p>
-  <a href="/Addsuperproduct">
-    <i class="fa fa-user-o" aria-hidden="true"></i>
-    Addsuperproduct
-  </a>
-  <a href="/Viewsuperproduct">
-    <i class="fa fa-laptop" aria-hidden="true"></i>
-    Viewsuperproduct
-  </a>
-  <a href="/Manageorders">
-    <i class="fa fa-clone" aria-hidden="true"></i>
-    Manageorders
-  </a>
-  <a href="javascript:void(0)">
-    <i class="fa fa-star-o" aria-hidden="true"></i>
-    Starred
-  </a>
+  <Link to="/Viewsuperproduct">
+  View product
+  </Link>
+  <Link to="/Addsuperproduct">
+    Add stock
+  </Link>
+  <Link to="/Manageorders">
+  Manageorders
+  </Link>
+<br></br> <br></br> <br></br><br></br><br></br><br></br><br></br> <br></br> <br></br><br></br><br></br><br></br><br></br> <br></br> <br></br><br></br><br></br><br></br><br></br> <br></br> <br></br><br></br><br></br><br></br>
   <div class="nav-item dropdown profile ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src={profile} ></img>{name}  
@@ -73,6 +67,7 @@ function Logout(){
           <a class="dropdown-item" href="#" onClick={Logout}>Logout</a>
         </div>
       </div> 
+
 </aside>
 </div>
       </>

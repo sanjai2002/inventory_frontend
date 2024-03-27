@@ -30,12 +30,12 @@ function SuperProduct() {
 {searchQuery === "" ? (
     data.map((d)=>( 
     <div className="card m-2 shadow-lg p-3 mb-5 bg-white rounded" > 
-     <img src={"data:image/png;base64," + d.productImage} style={{ "width": "200px" }}></img>
+     <img src={"data:image/png;base64," + d.productImage} className="w-100"></img>
     <div class="card-body ">
-    {d.superProductId}
+    
       <h4 class="card-title">{d.productName}</h4>
       <p class="card-text">{d.description}</p>
-      <p class="card-text">{d.sellingPrice}</p>
+      <p class="card-text">Price: {d.sellingPrice}</p>
       <Link  class="btn btn-primary" to={`/Purchase/${d.superProductId}`}>Purchase product</Link>
     </div>
   </div>
@@ -43,12 +43,12 @@ function SuperProduct() {
     )): filteredItems.length > 0 ?(
       filteredItems.map((d)=>( 
         <div className="card m-2 shadow-lg p-3 mb-5 bg-white rounded" > 
-        <img src={"data:image/png;base64," + d.productImage} style={{ "width": "200px" }}></img>
+        <img src={"data:image/png;base64," + d.productImage} className="w-100"></img>
         <div class="card-body ">
-  
+
         <h4 class="card-title">{d.productName}</h4>
       <p class="card-text">{d.description}</p>
-      <p class="card-text">{d.sellingPrice}</p>
+      <p class="card-text">Price: {d.sellingPrice}</p>
           <Link  class="btn btn-primary" to={`/Purchase/${d.superProductId}`}>Purchase product</Link>
         </div>
       </div>
@@ -59,7 +59,7 @@ function SuperProduct() {
 </div>
 </div>
 </>
-    )
+  )
 }
 export default SuperProduct;
 

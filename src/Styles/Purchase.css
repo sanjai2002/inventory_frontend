@@ -1,11 +1,12 @@
 .card-purchase {
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    
+    border-radius: 7px;
     padding: 20px;
     margin-bottom: 20px;
-    
+    background-color: #ffffff;
+    box-shadow: 5px 5px #dfd5d5;
   }
-  
+
   .card-image img {
     width: 100%;
     max-width: 300px;
@@ -25,7 +26,7 @@
   }
   
   .card-text {
-    color: #666;
+    color: #714242;
     margin-bottom: 20px;
   }
   
@@ -37,8 +38,8 @@
   }
   
   .counter-button {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+    background-color: #378CE7;
+    border: 1px solid #ffffff;
     padding: 10px 20px;
     cursor: pointer;
   }

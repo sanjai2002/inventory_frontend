@@ -6,6 +6,7 @@ import '../../Styles/Signin.css'
 import Forgetpassword from '../../Images/Forgot password-amico.png'
 
 function Email(){
+
     const [Email,setemail]=useState({
         email:""
     }
@@ -81,12 +82,10 @@ function Email(){
           <div className="field">
             <label>Email</label>
             <input type="text" placeholder="Enter the Email"
-                     onChange={e => setemail({ ...Email, email: e.target.value })} />
-                
+                     onChange={e => setemail({ ...Email, email: e.target.value })} />   
         <p ref={emailerror}></p>
           </div>
           <button className="fluid ui button blue">Get Password</button>
-        
         </div>
       </form>
       

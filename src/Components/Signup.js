@@ -58,11 +58,11 @@ function Signup() {
           });
           Toast.fire({
             icon: "success",
-            title: "Account Created successfully"
+            title: "Retailer Registration successfully"
           });
           setTimeout(() => {
             navigate('/');
-          }, 2000);       
+          }, 1000);       
         }
     })
     .catch(err => console.log(err));

@@ -1,8 +1,6 @@
 .card{
     width:20vw;
-   
   }
-  
   #SuperProducts{
     display: flex;
     flex-direction: row;

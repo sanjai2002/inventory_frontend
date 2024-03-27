@@ -39,18 +39,18 @@ function Viewsuperproduct() {
         <table className="table table " >
             <thead >
                 <tr>
-                    <th>productsId</th>
-                    <th>productcode</th>
-                    <th>productCategory</th>
-                    <th>productName</th>
-                    <th>description</th>
-                    <th>productImage</th>
-                    <th>buyingPrice</th>
-                    <th>sellingPrice</th>
-                    <th>expiryDate</th>
-                    <th>stock</th>
-                    <th>Update </th>
-                    <th>Delete </th>
+                    <th>Products Id</th>
+                    <th>Product code</th>
+                    <th>Product Category</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Product Image</th>
+                    <th>Buying Price</th>
+                    <th>Selling Price</th>
+                    <th>ExpiryDate</th>
+                    <th>Stock</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                     
                 </tr>
             </thead>
@@ -63,16 +63,15 @@ function Viewsuperproduct() {
                             <td>{d.productCategory}</td>
                             <td>{d.productName}</td>
                             <td>{d.description}</td>
-                            <img src={"data:image/png;base64," + d.productImage} style={{ "width": "50px" }}></img>
+                            <img src={"data:image/png;base64,"+ d.productImage} className="" style={{ "width": "80px", }}></img>
                             <td>{d.buyingPrice}</td>
                             <td>{d.sellingPrice}</td>
                             <td>{d.expiryDate}</td>
                             <td>{d.stock}</td>
-                            
                             <td>
                   <Link to={`/UpdateSuperproduct/${d.superProductId}`} className="btn btn-primary m-2">Update</Link>
-                  
-                </td>
+
+                                  </td>
                 <td>
                 <button onClick={e => Removeproduct(d.superProductId)} className="btn btn-danger">Delete</button>
                 </td>

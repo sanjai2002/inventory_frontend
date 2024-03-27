@@ -11,6 +11,7 @@ function Signin() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState( false);
+
   //Backend error
   const emailerrorr = useRef();
   const navigate = useNavigate();
@@ -43,25 +44,23 @@ function Signin() {
             title: "Invalid Password"
           });
       }
-      // if(res.data.email==false&&res.data.password==false) {
-        
-      //   const Toast = Swal.mixin({
-      //       toast: true,
-      //       position: "top-end",
-      //       showConfirmButton: false,
-      //       timer: 1000,
-      //       timerProgressBar: true,
-      //       didOpen: (toast) => {
-      //         toast.onmouseenter = Swal.stopTimer;
-      //         toast.onmouseleave = Swal.resumeTimer;
-      //       }
-      //     });
-      //     Toast.fire({
-      //       icon: "error",
-      //       title: "Invalid Email"
-      //     });
-      // }
-  
+      if(res.data.email==false&&res.data.password==false) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "error",
+            title: "Invalid Emailid"
+          });
+      }
       if(res.data.email==true&&res.data.password==true&& res.data.role=="Dealer") {
         //Cookies    
          Cookies.set('Email',formValues.email, { expires: 7 });
@@ -104,7 +103,7 @@ function Signin() {
             title: "Signed in successfully"
           });
           setTimeout(() => {
-            navigate('/Viewproduct ');
+            navigate('/Viewproduct');
           }, 1000);
          }
     })
@@ -127,7 +126,6 @@ function Signin() {
     }
     return errors;
   };
-
   return (  
     <> 
     <div className="Nav">  
@@ -169,7 +167,7 @@ function Signin() {
           </div>
           <p>{formErrors.password}</p>
           <button className="fluid ui button blue">Login</button>
-          <h4 className="signupmsg"><Link className="link"to={"/Signup"}> Sign Up ?</Link></h4>
+          <h4 className="signupmsg"><Link className="link"to={"/Signup"}>New Retailer?</Link></h4>
         </div>
       </form>
       

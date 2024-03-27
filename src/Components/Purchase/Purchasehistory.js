@@ -21,6 +21,7 @@ function Purchasehistory(){
     return(
         <>
         <div className="Purhistory">
+            <h4>Purchase Details</h4>
             <div>
           <table className="table table-striped">
             <thead>
@@ -31,6 +32,7 @@ function Purchasehistory(){
                     <th>Quantity</th>
                     <th>Bill Id</th>
                     <th>Product Amount</th>  
+                    <th>Status</th>  
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +44,17 @@ function Purchasehistory(){
                             <td>{d.superProduct.productName}</td>    
                             <td>{d.count}</td>
                             <td>{d.billId}</td>
-                            <td>{d.productAmount}</td>
+                            <td>{d.productAmount}</td>  
+                            {d.purchasestatus=="Delivered"?(
+                                    <>
+                                     <td Style={"color:green"}>{d.purchasestatus}</td>
+                                    </>
+                                    ):(
+                                   <>
+                                  <td Style={"color:Red"}>{d.purchasestatus}</td>
+                                   </>
+                                    )
+                                    }
                             
                         </tr>
                     ))

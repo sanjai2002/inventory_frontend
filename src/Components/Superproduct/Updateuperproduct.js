@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from "react";
+import React, { useState,useEffect,useRef} from "react";
 import axios from "axios";
 import { Link, useNavigate,useParams } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -15,6 +15,17 @@ function UpdateSuperproduct() {
     expiryDate:'',
     stock:'',  
 })
+
+const productcoderef=useRef();
+const productCategoryref=useRef();
+const productNameref=useRef();
+const descriptionref=useRef();
+const productImageref=useRef();
+const buyingPriceref=useRef();
+const sellingPriceref=useRef();
+const expiryDateref=useRef();
+const stockref=useRef();
+
 const navigate = useNavigate();
 const { id } = useParams();
 useEffect(() => {
@@ -25,8 +36,46 @@ useEffect(() => {
             })
             .catch(err => console.log(err));
     }, [])
+
 const handleSubmit = (event) => {
-    event.preventDefault();
+  event.preventDefault();
+  if (!values.productcode) {
+    productcoderef.current.innerText ="Required!";
+  }
+  if (!values.productCategory) {
+    productCategoryref.current.innerText ="Required!";
+  }
+  if (!values.productName) {
+    productNameref.current.innerText ="Required!";
+  }
+  if (!values.description) {
+    descriptionref.current.innerText ="Required!";
+  }
+  if (!values.productImage) {
+    productImageref.current.innerText ="Required!";
+  }
+  if (!values.buyingPrice) {
+    buyingPriceref.current.innerText ="Required!";
+  }
+  else if (values.buyingPrice<1) {
+    buyingPriceref.current.innerText ="Enter the valid Stock!!";
+  }
+  if (!values.sellingPrice) {
+    sellingPriceref.current.innerText ="Enter the valid Stock!!";
+  }
+  else if(values.buyingPrice<1) {
+    buyingPriceref.current.innerText ="Enter the valid Stock!!";
+  }
+  if (!values.expiryDate) {
+    expiryDateref.current.innerText ="Required!";
+  }
+  if (!values.stock) {
+    stockref.current.innerText ="Required";
+  }
+  else if (values.stock<1){
+    stockref.current.innerText ="Enter the valid Stock!";
+  }
+else{
     Swal.fire({
       title: "Are you sure?",
       icon: "warning",
@@ -52,6 +101,7 @@ const handleSubmit = (event) => {
     setTimeout(() => {
       navigate('/Viewsuperproduct');
     }, 3000);      
+}
 }
 
 const Removeproduct = (productsId) => {
@@ -102,25 +152,30 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Productcode</label>
             <input type="text" name="productcode" value={values.productcode} placeholder="Enter Productcode" onChange={e => setValues({ ...values, productcode: e.target.value })}/>
+            <p ref={productcoderef}></p>
           </div>
           
           <div className="field">
             <label>productName</label>
             <input type="text" name="productName" placeholder="Enter ProductName"  value={values.productName}onChange={e => setValues({ ...values, productName: e.target.value })}/>
+            <p ref={productNameref}></p>
           </div>
 
           <div className="field">
             <label>Product Category</label>
             <input type="text" name="productCategory" placeholder="Enter ProductCategory" value={values.productCategory} onChange={e => setValues({ ...values, productCategory: e.target.value })}/>
+            <p ref={productCategoryref}></p>
           </div>
           <div className="field">
             <label>Description</label>
             <input type="text" name="description" placeholder="Enter Description" value={values.productcode} onChange={e => setValues({ ...values, description: e.target.value })}/>
+            <p ref={descriptionref}></p>
           </div>
 
           <div className="field">
             <label>ProductImage</label>
             <input type="file" multiple onChange={e=>handleImages(e)}/>
+            <p ref={ productImageref}></p>
             {/* <input type="text" name="description" placeholder="description" onChange={e => setValues({ ...values, productImage: e.target.value })}/> */}
           </div>
           
@@ -130,6 +185,7 @@ const handleImages=(e)=>{
               <input type="number" placeholder="Enter buyingPrice"  value={values.buyingPrice} id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
               <div class="ui basic label">.00</div>
             </div>
+            <p ref={buyingPriceref}></p>
           </div>
           <div className="field">
             <label>SellingPrice</label>
@@ -137,6 +193,7 @@ const handleImages=(e)=>{
               <input type="number" placeholder="Enter sellingPrice"  value={values.sellingPrice}id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
               <div class="ui basic label">.00</div>
             </div>
+            <p ref={sellingPriceref}></p>
           </div>
 
           <div className="field">
@@ -144,6 +201,7 @@ const handleImages=(e)=>{
             <div class="ui right labeled input">
               <input type="Date" placeholder="expiryDate" value={values.expiryDate} onChange={e => setValues({ ...values, expiryDate: e.target.value })} />
            </div>
+           <p ref={expiryDateref}></p>
           </div>
 
           <div className="field">
@@ -151,6 +209,7 @@ const handleImages=(e)=>{
             <div class="ui right labeled input">
               <input type="number" placeholder="stock" value={values.stock} onChange={e => setValues({ ...values, stock: e.target.value })} />
            </div>
+           <p ref={stockref}></p>
           </div>       
           <button className="fluid ui button btnsubmit ">Update products</button>
         </div>

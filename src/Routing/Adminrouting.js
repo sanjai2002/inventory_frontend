@@ -4,7 +4,7 @@ import DealerDashboard from '../Components/DealerDashboard'
 function Adminrouting(){
     let auth = {'role': Cookies.get('Role')}
     return (
-        auth.role=="Dealer"?<><DealerDashboard/><section style={{"position":"absolute","top":"10vh","left":"20vw"}}><Outlet /></section></>: 
+        auth.role=="Dealer"?<><DealerDashboard/><section style={{"position":"absolute","top":"8vh","left":"18vw"}}><Outlet /></section></>: 
         <Navigate to="/Pagenotfound"/>
     )
 }

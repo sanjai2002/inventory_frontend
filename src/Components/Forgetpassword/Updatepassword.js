@@ -3,23 +3,40 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import Forgetpassword from '../../Images/Forgot password-amico.png'
-function Updatepassword(props){
+function Updatepassword(){
     const [values,setvalues]=useState({
         email:"",
         receivePassword:"",
         newpassword:""
     }
     )
-    useEffect(()=>{
-        console.log(props);
-    })
+    
+
     const emailerror=useRef();
+    const Receivepassword=useRef();
+    const Newpassword=useRef();
+
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
             if((!regex.test(values.email))){
                 emailerror.current.innerText="Enter valid Email";
             }
+            if (!values.receivePassword) {
+              Receivepassword.current.innerText = "Password is required";
+            } else if (values.receivePassword.length < 6) {
+              Receivepassword.current.innerText= "Password must be more than 4 characters";
+            } else if (values.receivePassword.length > 10) {
+              Receivepassword.current.innerText= "Password cannot exceed more than 10 characters";
+            }          
+            if (!values.Newpassword) {
+              Newpassword.current.innerText = "Newpassword is required";
+            } else if (values.Newpassword.length < 6) {
+              Newpassword.current.innerText= "Password must be more than 4 characters";
+            } else if (values.Newpassword.length > 10) {
+              Newpassword.current.innerText= "Password cannot exceed more than 10 characters";
+            }
+
         event.preventDefault();
         axios.put('https://localhost:7282/api/Retailer/Updatepassword',values) 
             .then(res => {
@@ -29,7 +46,7 @@ function Updatepassword(props){
                     toast: true,
                     position: "top",
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                       toast.onmouseenter = Swal.stopTimer;
@@ -47,7 +64,7 @@ function Updatepassword(props){
                     toast: true,
                     position: "top",
                     showConfirmButton: false,
-                    timer: 2000,
+                    timer: 1000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                       toast.onmouseenter = Swal.stopTimer;
@@ -60,7 +77,7 @@ function Updatepassword(props){
                   });
                   setTimeout(() => {
                     navigate('/')
-                  }, 3000);
+                  }, 1000);
                  
                 }
             })
@@ -80,7 +97,7 @@ function Updatepassword(props){
         <div className="ui form">
           <div className="field">
             <label>Email</label>
-            <input type="text" placeholder="Enter the Email" value={props.email}
+            <input type="text" placeholder="Enter the Email"
                      onChange={e => setvalues({ ...values, email: e.target.value })} />
                 
         <p ref={emailerror}></p>
@@ -89,11 +106,13 @@ function Updatepassword(props){
             <label>Receive Password</label>
             <input type="password" placeholder="Enter the Receive password"
                      onChange={e => setvalues({ ...values, receivePassword: e.target.value })} />
+                     <p ref={Receivepassword }></p>
           </div>
           <div className="field">
             <label>New Password</label>
             <input type="password" placeholder="Enter the New password"
                       onChange={e => setvalues({ ...values, newpassword: e.target.value })} />
+                      <p ref={Newpassword }></p> 
               </div>
           <button className="fluid ui button blue">Update Password</button>
           {/* <h4><Link className="link"to={"/Signin"}  >Sign in?</Link></h4> */}

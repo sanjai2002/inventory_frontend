@@ -1,17 +1,43 @@
 .blink{
-    animation: blinkani 1s infinite ;
+  animation: blinkani 1s infinite ;
 }
 @keyframes blinkani {
-    0% { background-color: #FB6D48; } /* Fully opaque */
-    50% { background-color: transparent; } /* Fully transparent */
-    100% { background-color: #FB6D48; } /* Back to fully opaque */
-  }
+  0% { background-color: #FB6D48; } /* Fully opaque */
+  50% { background-color: transparent; } /* Fully transparent */
+  100% { background-color: #FB6D48; } /* Back to fully opaque */
+}
 
 .blinkDate{
-    animation: blinkanimation 1s infinite ;
+  animation: blinkanimation 1s infinite ;
 }
 @keyframes blinkanimation {
-    0% { background-color: #9BCF53; } /* Fully opaque */
-    50% { background-color: transparent; } /* Fully transparent */
-    100% { background-color: #9BCF53; } /* Back to fully opaque */
-  }
+  0% { background-color: #9BCF53; } /* Fully opaque */
+  50% { background-color: transparent; } /* Fully transparent */
+  100% { background-color: #9BCF53; } /* Back to fully opaque */
+}
+  /* Add this CSS code to your stylesheet */
+.green-circle {
+  width: 20px; /* Size of the circle */
+  height: 20px; /* Size of the circle */
+  background-color: #9BCF53; /* Circle color */
+  border-radius: 50%; /* Makes the div round */
+}
+.Orange-circle{
+  width: 20px; /* Size of the circle */
+  height: 20px; /* Size of the circle */
+  background-color: #FB6D48; /* Circle color */
+  border-radius: 50%; /* Makes the div round */
+}
+.Expiry{
+  display: flex;
+  margin-top: 2px;
+  padding-right: 20px;
+}
+.ExpiryName{
+  font-size: 18px;
+  padding-left: 10px;
+}
+.productalert{
+  display: flex;
+}
+

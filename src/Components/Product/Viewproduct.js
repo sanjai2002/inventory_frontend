@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-//  import '../../Styles/Product.css'
+import '../../Styles/Product.css'
 import '../../Styles/Dealer.css'
+
 function Viewproduct() {
   const [data, setData] = useState([])
   const navigate = useNavigate(); 
@@ -16,16 +17,15 @@ let month = String(today.getMonth() + 1).padStart(2, '0');
 let day = String(today.getDate()).padStart(2, '0');
 let dateString = today.getFullYear() + '-' + month + '-' + day;
 console.log(dateString);
-
 let today1 = new Date();
 today1.setDate(today1.getDate() + 4); // Add 5 days
 let month1 = String(today1.getMonth() + 1).padStart(2, '0');
 let day1 = String(today1.getDate()).padStart(2, '0');
 let dateString1 = today1.getFullYear() + '-' + month1 + '-' + day1;
 console.log(dateString1);
- 
 
   useEffect(() => {
+  setTimeout(() => {
     axios.post('https://localhost:7282/api/Product/FindRetailer', {
       retailerid: Cookies.get("retailerid")
     })
@@ -34,8 +34,9 @@ console.log(dateString1);
         console.log(res.data);
       })
       .catch(err => console.log(err));
+  },500);
   }, [])
-
+  
   const Removeproduct = (productsId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -59,10 +60,22 @@ console.log(dateString1);
     });
   }
   return (
-   
-
-    <table className="table table-striped">
-      
+    <>
+ <div className="productalert">
+<div className="Expiry">
+    <div className="green-circle">
+    </div>
+    <div className="ExpiryName">Expiry Product Alert</div>
+    </div>
+    <br></br>
+<div className="Expiry">
+    <div className="Orange-circle">
+    </div>
+    <div className="ExpiryName">Stock Alert
+    </div>
+    </div>
+    </div>
+    <table className="table table-striped">   
       <thead>
         <tr>
         {/* <h1>{date}</h1> */}
@@ -74,26 +87,28 @@ console.log(dateString1);
           <th>Selling Price</th>
           <th>Expiry Date</th>
           <th>Stock</th>
-          <th>Update  Delete</th>
+          <th>Update </th>
+          <th>Remove</th>
         </tr>
       </thead>
       <tbody>
         {
           data.map((d, i) => (
-            d.stock == 0 ? <>
+            d.stock <50 ? <>
               <tr key={i} className="blink">
                 <td>{d.productsId}</td>
                 <td>{d.productcode}</td>
                 <td>{d.productCategory}</td>
                 <td>{d.productName}</td>
+                
                 <td>{d.buyingPrice}</td>
                 <td>{d.sellingPrice}</td>
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
                 <td>
-                  <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Edit</Link>
-                  <button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Delete</button>
-                </td>
+                  <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Update</Link></td>
+                 <td><button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Remove</button></td> 
+                
               </tr>
             </> :
              d.expiryDate == dateString ||d.expiryDate == dateString1? <>
@@ -106,10 +121,8 @@ console.log(dateString1);
                 <td>{d.sellingPrice}</td>
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
-                <td>
-                  <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Edit</Link>
-                  <button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Delete</button>
-                </td>
+                <td><Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Update</Link></td> 
+                <td><button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Remove</button></td>
               </tr>
             </> :<>
               <tr key={i}>
@@ -123,21 +136,15 @@ console.log(dateString1);
                 <td>{d.sellingPrice}</td>
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
-
-                <td>
-                
-                  <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2 ">Edit</Link>
-                  
-                  <button onClick={e => Removeproduct(d.productsId)} type="button" class="btn btn-danger">Delete</button>
-                  
-                </td>
+                <td><Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2 ">Update</Link> </td>
+                <td> <button onClick={e => Removeproduct(d.productsId)} type="button" class="btn btn-danger">Remove</button></td> 
               </tr></>
               
           ))
         }
       </tbody>
     </table>
- 
+    </>
   )
 }
 

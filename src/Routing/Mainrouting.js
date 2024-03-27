@@ -6,7 +6,7 @@ function Mainrouting(){
     return(
         Email.Email?<><Navbar/><section style={{"position":"absolute","top":"10vh","left":"20vw"}}><Outlet /></section></> : 
         <Navigate to="/Pagenotfound"/>
+        
     )
 }
-
 export default Mainrouting;

@@ -19,10 +19,11 @@ function Navbar(){
         Cookies.remove('Role');
         navigate('/');
     }
+
     const [name,setName] = useState();
     const[Location,Setlocation]=useState();
     const[Shopname,Setshopname]=useState();
-    
+  
     const[retailerid,setretailerid]=useState(Cookies.get("retailerid"));
     useEffect(()=>{
       axios.post('https://localhost:7282/api/Retailer/FindEmail',{
@@ -35,12 +36,13 @@ function Navbar(){
     setName(res.data.name);
     setretailerid(res.data.retailerid);
 })
+
   .catch(err => console.log(err));
     },[])
     //id store in cookies:
     Cookies.set('retailerid', retailerid, { expires: 7 });
     const Id=Cookies.get("retailerid");
-       
+
 const deleteuser = (Id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -65,32 +67,37 @@ const deleteuser = (Id) => {
     });
   }
     return(
-        <>
-      <aside>
-  <p style={{color:"White"}}> {Shopname}  </p>
-  <a href="/Viewproduct">
-    <i class="fa fa-user-o" aria-hidden="true"></i>
-    View products
-  </a>
-  <a href="/Addproduct">
-    <i class="fa fa-user-o" aria-hidden="true"></i>
-    Add Products
-  </a>
-  <a href="/CustomerOrder">
-    Generate Bill
-  </a>
+  <>
+ <div className='Dealerpage'>
+ <aside>
 
-  <a href="/Orderhistory">
+  <p style={{color:"White",fontSize:"25px"}}> {Shopname}  </p>
+  <Link to="/Viewproduct" className="no-underline">
+  View products
+  </Link>
+  <Link to="/Addproduct"  refresh="true"className="no-underline">
+  Add Products
+  </Link>
+  <Link to="/CustomerOrder" className="no-underline">
+  Generate Bill
+  </Link>
+
+  <Link to="/Orderhistory" className="no-underline">
    Sales History
-  </a>
-  <a href="/SuperProduct">
-   Purchase
-  </a>
-  <a href="/Purchasehistory">
+  </Link>
+
+ <Link to="/SuperProduct" className="no-underline">
+ Purchase 
+  </Link>
+  <Link to="/Purchasehistory" className="no-underline">
   Purchase Details
-  </a>
- <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
-  <div class="nav-item dropdown profile ">
+  </Link>
+
+  <Link to="/Customerdetails" className="no-underline">
+  Customerdetails
+ </Link>
+ <br></br>
+  <div class="nav-item dropdown profile position-sticky-bottom">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src={profile} ></img>&nbsp; &nbsp;{name}    
         </a>
@@ -101,6 +108,7 @@ const deleteuser = (Id) => {
         </div>
       </div>   
 </aside>
+</div>
     </>
     
     )

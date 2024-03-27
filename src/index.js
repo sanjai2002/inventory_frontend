@@ -27,6 +27,7 @@ import CustomerOrder from './Components/Customer/Customerorder'
 import UpdateSuperproduct from './Components/Superproduct/Updateuperproduct'
 
 import Orderhistory from './Components/Retailers/Orderhistory'
+import Customerdetails from './Components/Retailers/Customerdetails'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -49,10 +50,7 @@ root.render(
     <Route path='/Superproduct' element={<Superproduct />}></Route>
     <Route path='/Purchase/:id' element={< Purchase/>}></Route>
     <Route path='/Purchasehistory' element={< Purchasehistory/>}></Route>
-
-
-   
-   
+    <Route path='/Customerdetails' element={< Customerdetails/>}></Route>
     </Route>
     <Route element={<Adminrouting/>}>
     <Route path='/Addsuperproduct' element={<Addsuperproduct/>}></Route>
