@@ -10,15 +10,16 @@ function Updatepassword(){
         newpassword:""
     }
     )
-    
-
     const emailerror=useRef();
     const Receivepassword=useRef();
     const Newpassword=useRef();
 
     const navigate = useNavigate();
     const handleSubmit = (event) => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+          if(!regex.test(values.email)||!values.receivePassword||values.receivePassword.length < 6|| values.receivePassword.length > 10||!values.Newpassword||values.Newpassword.length < 6||values.Newpassword.length > 10){
+
             if((!regex.test(values.email))){
                 emailerror.current.innerText="Enter valid Email";
             }
@@ -36,7 +37,8 @@ function Updatepassword(){
             } else if (values.Newpassword.length > 10) {
               Newpassword.current.innerText= "Password cannot exceed more than 10 characters";
             }
-
+          }
+else{
         event.preventDefault();
         axios.put('https://localhost:7282/api/Retailer/Updatepassword',values) 
             .then(res => {
@@ -56,8 +58,7 @@ function Updatepassword(){
                   Toast.fire({
                     icon: "error",
                     title: "Please enter correct password"
-                  });
-                
+                  });    
                 }
                 else{
                   const Toast = Swal.mixin({
@@ -82,7 +83,9 @@ function Updatepassword(){
                 }
             })
             .catch(err => console.log(err));
+          }
     }
+    
     return(
         <>
     <div className="signupall">
@@ -96,7 +99,7 @@ function Updatepassword(){
         <div className="ui divider"></div>
         <div className="ui form">
           <div className="field">
-            <label>Email</label>
+            <label>Reenter the Email</label>
             <input type="text" placeholder="Enter the Email"
                      onChange={e => setvalues({ ...values, email: e.target.value })} />
                 

@@ -7,6 +7,17 @@
   100% { background-color: #FB6D48; } /* Back to fully opaque */
 }
 
+.DelaerBlink{
+  animation: Dealerproduct 1s infinite ;
+}
+
+@keyframes Dealerproduct {
+  0% { background-color: #FFCF81; } /* Fully opaque */
+  50% { background-color: transparent; } /* Fully transparent */
+  100% { background-color: #FFCF81; } /* Back to fully opaque */
+}
+
+
 .blinkDate{
   animation: blinkanimation 1s infinite ;
 }
@@ -34,6 +45,7 @@
   padding-right: 20px;
 }
 .ExpiryName{
+  
   font-size: 18px;
   padding-left: 10px;
 }

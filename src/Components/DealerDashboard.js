@@ -12,18 +12,20 @@ function DealerDashboard(){
   const role =Cookies.get('Role')
   //logout
   const navigate = useNavigate();
+
 function Logout(){
       Cookies.remove('retailerid');
       Cookies.remove('Email');
       Cookies.remove('Role');
       navigate('/');
   }
+
+
   const [name,setName] = useState();
   const[Location,Setlocation]=useState();
   const[Shopname,Setshopname]=useState();
 
   const[retailerid,setretailerid]=useState(Cookies.get("retailerid"));
-
   useEffect(()=>{
     axios.post('https://localhost:7282/api/Retailer/FindEmail',{
       email:Email

@@ -57,6 +57,8 @@ console.log(dateString1);
           icon: "success"
         });
       }
+      window.location.reload();
+      
     });
   }
   return (
@@ -100,14 +102,13 @@ console.log(dateString1);
                 <td>{d.productcode}</td>
                 <td>{d.productCategory}</td>
                 <td>{d.productName}</td>
-                
                 <td>{d.buyingPrice}</td>
                 <td>{d.sellingPrice}</td>
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
                 <td>
-                  <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Update</Link></td>
-                 <td><button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Remove</button></td> 
+                 <Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2">Update</Link></td>
+                <td><button onClick={e => Removeproduct(d.productsId)} className="btn btn-danger">Remove</button></td> 
                 
               </tr>
             </> :
@@ -138,8 +139,7 @@ console.log(dateString1);
                 <td>{d.stock}</td>
                 <td><Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2 ">Update</Link> </td>
                 <td> <button onClick={e => Removeproduct(d.productsId)} type="button" class="btn btn-danger">Remove</button></td> 
-              </tr></>
-              
+              </tr></>   
           ))
         }
       </tbody>

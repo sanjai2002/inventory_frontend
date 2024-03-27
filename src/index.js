@@ -33,8 +33,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <Routes>
-   < Route path='/Pagenotfound' element={< Pagenotfound/>}></Route>
-   < Route path='*' element={< Pagenotfound/>}></Route>
+   <Route path='/Pagenotfound' element={< Pagenotfound/>}></Route>
+   <Route path='*' element={< Pagenotfound/>}></Route>
     <Route path='/' element={<Signin/>}></Route>
     <Route path='/Signup' element={<Signup/>}></Route>
     <Route path='/Email' element={<Email/>}></Route>
@@ -62,4 +62,3 @@ root.render(
   </Routes>
   </BrowserRouter>
 );
-

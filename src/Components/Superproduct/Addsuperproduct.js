@@ -160,7 +160,7 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Production Price</label>
             <div class="ui right labeled input">
-              <input type="number" placeholder="Enter ProductionPrice" id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
+              <input type="number" min="1" placeholder="Enter ProductionPrice" id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
               
               <div class="ui basic label">.00</div>
             </div>
@@ -169,7 +169,7 @@ const handleImages=(e)=>{
           <div className="field">
             <label>SellingPrice</label>
             <div class="ui right labeled input">
-              <input type="number" placeholder="Enter SellingPrice" id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
+              <input type="number" min="1" placeholder="Enter SellingPrice" id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
               
               <div class="ui basic label">.00</div>
             </div>
@@ -187,7 +187,7 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Stock</label>
             <div class="ui right labeled input">
-              <input type="number" placeholder="stock" onChange={e => setValues({ ...values, stock: e.target.value })} />
+              <input type="number"   min="1" placeholder="stock" onChange={e => setValues({ ...values, stock: e.target.value })} />
               
            </div>
            <p ref={stockref}></p>

@@ -23,8 +23,9 @@ function CustomerOrder() {
 //   mobileNumber:""
 // }
 // )
+
 // function FindCustomer(){
-//   axios.post('https://localhost:7282/api/Customer',Customermobilnumber)
+//   axios.post('https://localhost:7282/api/Customer/FindCustomer',Customermobilnumber)
 //   .then(res => {
 //       console.log(res); 
 //   })
@@ -36,11 +37,10 @@ today.setDate(today.getDate()); // Add 5 days
 let month = String(today.getMonth() + 1).padStart(2, '0');
 let day = String(today.getDate()).padStart(2, '0');
 let dateString = today.getFullYear() + '-' + month + '-' + day;
-
 const Billid = "RZ" + uuid().slice(0, 8);
 const AutoBillid= useState(Billid);
+const [count,setcount]= useState(0);
  console.log(AutoBillid);
-
   const [values, setValues] = useState({
     productsId: '',
     count: '',
@@ -74,12 +74,13 @@ const productsIdref=useRef();
     console.log(billvalues);
     setValues({ ...values, productsId:e.target.value.split("-")[2] })
     console.log(values);
+    setcount(jsonresult[3])
     console.log(jsonresult[2]);
   }
 
   const handleSubmit = (event) => {
      event.preventDefault();
-
+   if(!values.count||values.count<0||!values.mobileNumber||values.mobileNumber.length<10||values.mobileNumber.length>10||!values.customerName||!values.productsId){
     if (!values.count) {
       countref.current.innerText ="Required!";
     }
@@ -101,6 +102,7 @@ const productsIdref=useRef();
     if (!values.productsId) {
       productsIdref.current.innerText ="Required!";
     }
+   }
     else{
     axios.post('https://localhost:7282/api/Order/Orderproduct', values)
       .then(res => {
@@ -111,10 +113,12 @@ const productsIdref=useRef();
       .catch(err => console.log(err));   
   }
   }
+
   const Email = Cookies.get('Email');
   const[Location,Setlocation]=useState();
   const[Shopname,Setshopname]=useState();
   const[Mobileno,SetMobileno]=useState();
+
   useEffect(()=>{
     axios.post('https://localhost:7282/api/Retailer/FindEmail',{
       email:Email
@@ -138,21 +142,20 @@ const productsIdref=useRef();
   };
 
   return (
-    <>
 
-    {/* <div class="form-group ">
+    <>
+     {/* <div class="form-group ">
     <label for="inputPassword4">Mobile Number:</label>
     <input type="number" class="form-control" onChange={e => setCustomermobilnumber({ ...Customermobilnumber, mobileNumber: e.target.value })} placeholder="Enter Mobile Number" />
     <button onClick={FindCustomer}>Click</button>
   </div> */}
-
     <div className="Customer">
       <h5>Billing System</h5>
       <div className="CustomerorderBill"> 
         <div class="card ordercard ">     
-          <form onSubmit={handleSubmit}>
+          <form>
             <div class="form-row">  
-         
+          
               <div class="form-group ">
                 <label for="inputEmail4">Customer Name</label>
                 <input type="text" class="form-control" onChange={e => { setValues({ ...values, customerName: e.target.value }) }} placeholder="Enter the name" />
@@ -172,11 +175,10 @@ const productsIdref=useRef();
                   {
                 data.map((d) => (
                   
-                    <option value={d.productName+"-"+d.sellingPrice+"-"+d.productsId}>{d.productsId}-{d.productName}-{d.sellingPrice}</option>
+                    <option value={d.productName+"-"+d.sellingPrice+"-"+d.productsId+"-"+d.stock}>{d.productsId}-{d.productName}-{d.sellingPrice}</option>
                 ))
                 }
                </select>    
-
                <p ref={productsIdref}></p>  
 
           {/* <select  value={values.productsId} onChange={e=>setValues({ ...values, productsId: e.target.value })}>
@@ -189,13 +191,12 @@ const productsIdref=useRef();
             </div>
             <div class="form-group">
               <label for="inputAddress2">Quantity</label>
-              <input type="number" class="form-control" id="inputAddress2" onChange={e => setValues({ ...values, count: e.target.value })} />
+              <input type="number"  min="1" class="form-control" max={count} id="inputAddress2" onChange={e => setValues({ ...values, count: e.target.value })} />
               <p ref={countref}></p>
             </div>
-            <button type="submit" class="btn btn-primary">Generate Bill</button>
+            <button type="submit" class="btn btn-primary" onClick={handleSubmit}>Generate Bill</button>
           </form>
         </div>
-
         <div id="Bill">
           <div className="bill-container">
             <div className="shop-details">

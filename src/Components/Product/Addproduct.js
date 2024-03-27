@@ -32,6 +32,7 @@ const stockref=useRef();
 const navigate = useNavigate();
 
 const handleSubmit = (event) => {
+  if(!values.productcode||!values.productCategory||!values.productName||!values.description||!values.productImage||!values.buyingPrice||!values.sellingPrice||!values.expiryDate||!values.stock||values.stock<1){ 
   if (!values.productcode) {
     productcoderef.current.innerText ="Required!";
   }
@@ -62,7 +63,7 @@ const handleSubmit = (event) => {
   else if(values.stock<1){
     stockref.current.innerText ="Enter the valid stock!";
   }
-
+}
   else{
     event.preventDefault();
     Swal.fire({
@@ -134,7 +135,7 @@ const handleImages=(e)=>{
             <input type="text" required name="description" placeholder="description" onChange={e => setValues({ ...values, description: e.target.value })}/>
             <p ref={ descriptionref}></p>
           </div>
-
+        
           <div className="field">
             <label>ProductImage</label>
             <input type="file" required  multiple onChange={e=>handleImages(e)}/>
@@ -144,7 +145,7 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Buying Price</label>
             <div class="ui right labeled input">
-              <input type="number" required placeholder="Enter Buying Price" id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
+              <input type="number"  min="1" placeholder="Enter Buying Price" id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
               <div class="ui basic label">.00</div>
             </div>
             <p ref={buyingPriceref}></p>
@@ -153,7 +154,7 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Selling Price</label>
             <div class="ui right labeled input">
-              <input type="number" required placeholder="Enter sellingPrice" id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
+              <input type="number" min="1" placeholder="Enter sellingPrice" id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
               <div class="ui basic label">.00</div>
             </div>
             <p ref={sellingPriceref}></p>
@@ -170,8 +171,8 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Stock</label>
             <div class="ui right labeled input">
-              <input type="number" required placeholder="stock"onChange={e => setValues({ ...values, stock: e.target.value })} />
-              
+              <input type="number"  min="1" placeholder="stock"onChange={e => setValues({ ...values, stock: e.target.value })} />
+           
            </div>
            <p ref={stockref}></p>
            

@@ -40,6 +40,8 @@ useEffect(() => {
 
 const navigate = useNavigate();
 const handleSubmit = (event) => {
+  
+  if(!values.productcode||!values.productCategory||!values.productName||!values.description||!values.productImage||!values.buyingPrice||!values.sellingPrice||!values.expiryDate||!values.stock||values.stock<1){
   if (!values.productcode) {
     productcoderef.current.innerText ="Required!";
   }
@@ -67,6 +69,10 @@ const handleSubmit = (event) => {
   if (!values.stock) {
     stockref.current.innerText ="Required!";
   }
+  else if(values.stock<1){
+    stockref.current.innerText ="Enter the valid stock!";
+  }
+}
   else{
     event.preventDefault();
     Swal.fire({
@@ -119,34 +125,34 @@ const handleImages=(e)=>{
       <div className="divider"></div>
         <div className="ui divider"></div>
         <div className="ui form">
-
           <div className="field">
             <label>Product code</label>
-            <input type="text" required name="productcode" value={values.productcode} placeholder="productcode" onChange={e => setValues({ ...values, productcode: e.target.value })}/>
+            <input type="text"  name="productcode" value={values.productcode} placeholder="productcode" onChange={e => setValues({ ...values, productcode: e.target.value })}/>
             <p ref={productcoderef}></p>
           </div>
 
           <div className="field">
             <label>Product Name</label>
-            <input type="text" required name="productName"value={values.productName} placeholder="productName" onChange={e => setValues({ ...values, productName: e.target.value })}/>
-            <p ref={productcoderef}></p>
+            <input type="text"  name="productName"value={values.productName} placeholder="productName" onChange={e => setValues({ ...values, productName: e.target.value })}/>
+            <p ref={productNameref}></p>
           </div>
 
           <div className="field">
             <label>Product Category</label>
-            <input type="text" required name="productCategory" value={values.productCategory} placeholder="productCategory" onChange={e => setValues({ ...values, productCategory: e.target.value })}/>
-            <p ref={productcoderef}></p>
+            <input type="text"  name="productCategory" value={values.productCategory} placeholder="productCategory" onChange={e => setValues({ ...values, productCategory: e.target.value })}/>
+            <p ref={ productCategoryref}></p>
           </div>
+          
           <div className="field">
             <label>Description</label>
             <input type="text" required name="description" value={values.description}  placeholder="description" onChange={e => setValues({ ...values, description: e.target.value })}/>
-            <p ref={productcoderef}></p>
+            <p ref={descriptionref}></p>
           </div>
 
           <div className="field">
             <label>ProductImage</label>
-            <input type="file"required  multiple onChange={e=>handleImages(e)}/>
-            <p ref={productcoderef}></p>
+            <input type="file"multiple onChange={e=>handleImages(e)}/>
+            <p ref={productImageref}></p>
  
           </div>
 
@@ -154,40 +160,39 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Actual  Price</label>
             <div class="ui right labeled input">
-              <input type="number"required   value={values.buyingPrice}  placeholder="Enter buyingPrice" id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
+              <input type="number" min="1"   value={values.buyingPrice}  placeholder="Enter buyingPrice" id="amount"onChange={e => setValues({ ...values, buyingPrice: e.target.value })} />
               
               <div class="ui basic label">.00</div>
             </div>
-            <p ref={productcoderef}></p>
+            <p ref={buyingPriceref}></p>
           </div>
-
           <div className="field">
             <label>Selling Price</label>
             <div class="ui right labeled input">
-              <input type="number"required value={values.sellingPrice}  placeholder="Enter sellingPrice" id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
+              <input type="number"  min="1" required value={values.sellingPrice}  placeholder="Enter sellingPrice" id="amount"onChange={e => setValues({ ...values, sellingPrice: e.target.value })} />
               <div class="ui basic label">.00</div>
             </div>
-            <p ref={productcoderef}></p>
+            <p ref={sellingPriceref}></p>
           </div>
 
           <div className="field">
             <label>Expiry Date</label>
             <div class="ui right labeled input">
               <input type="Date" required  value={values.expiryDate} placeholder="expiryDate"onChange={e => setValues({ ...values, expiryDate: e.target.value })} />
-              <p ref={productcoderef}></p>
+              <p ref={expiryDateref}></p>
            </div>
           </div>
           <div className="field">
             <label>Stock</label>
             <div class="ui right labeled input">
-              <input type="number" required   value={values.stock} placeholder="stock"onChange={e => setValues({ ...values, stock: e.target.value })} />
-              <p ref={productcoderef}></p>
+              <input type="number" min="1"  placeholder="stock"onChange={e => setValues({ ...values, stock: e.target.value })} />
+            
            </div>
+           Old Stock:{values.stock}
+              <p ref={stockref}></p>
           </div>    
           <button class="btn btn-primary" onClick={handleSubmit}>Update the Product</button>
-        </div>
-  
-      
+        </div>    
     </form>
   </div>
   <div className="Addproductimage">

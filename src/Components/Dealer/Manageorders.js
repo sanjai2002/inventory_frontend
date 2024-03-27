@@ -48,7 +48,7 @@ function Manageorders() {
                             <th>Bill id</th>
                             <th>Product Amount</th>
                             <th>Order Status</th>
-                            <th>OrderStatus</th>
+                            <th>Update status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,7 +69,7 @@ function Manageorders() {
                                      <td><button className='btn btn-secondary' onClick={() => { handleShipped(d.purchaseId) }}>Shipped</button></td>
                                     </>
                                     ):d.purchasestatus=="Delivered"?
-                                    <th>Delivered </th>
+                                    <th> </th>
                                     :(
                                    <>
                                     <td><button className='btn btn-success' onClick={() => { handleDelivered(d.purchaseId) }}>Delivered</button></td>

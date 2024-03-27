@@ -29,7 +29,7 @@ function Customerdetails(){
                     <th>Customer ID</th>
                     <th>Customer Name</th>
                     <th>Mobile Number</th>
-                    <th>Credit points</th>
+                    {/* <th>Credit points</th> */}
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@ function Customerdetails(){
                             <td>{d.customerID}</td>
                             <td>{d.customerName}</td>
                             <td>{d.mobileNumber}</td>
-                            <td>{d.creditpoints}</td>
+                            {/* <td>{d.creditpoints}</td> */}
                 
                         </tr>
                     ))

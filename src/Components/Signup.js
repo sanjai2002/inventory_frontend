@@ -168,7 +168,7 @@ function Signup() {
           <div className="field">
             <label>Password</label>
             <input
-              type="password"
+              type="password" min="1"
               name="password"
               placeholder="Enter the Password"
               value={formValues.password}

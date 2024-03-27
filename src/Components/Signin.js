@@ -58,7 +58,7 @@ function Signin() {
           });
           Toast.fire({
             icon: "error",
-            title: "Invalid Emailid"
+            title: "Invalid Email id"
           });
       }
       if(res.data.email==true&&res.data.password==true&& res.data.role=="Dealer") {
@@ -128,49 +128,50 @@ function Signin() {
   };
   return (  
     <> 
+
     <div className="Nav">  
     </div>
     <div className="signinall">
-    
     <div className="loginimage">
-     <img src={Inventory} ></img>
+     <img  data-testid="Iventoryimg" src={Inventory} ></img>
      </div>
      <div></div>
     <div className="container">
     <label ref={emailerrorr}></label>
       <form onSubmit={handleSubmit}>
-    
-        <h1>Login<i class="sign-in icon"></i></h1>
+        <h1 data-testid="Heading">Login<i class="sign-in icon"></i></h1>
         <div className="ui divider"></div>
         <div className="ui form">
           <div className="field">
-            <label>Email</label>
+            <label data-testid="lblEmail">Email</label>
             <input
+            data-testid="inputEmail"
               type="text"
               name="email"
               placeholder="Enter Email"
               value={formValues.email}
               onChange={handleChange}
             />
+
           </div>
           <p>{formErrors.email}</p>
           <div className="field">
-            <label>Password</label>
+            <label data-testid="lblPassword">Password</label>
             <input
+             data-testid="inputPassword"
               type="password"
               name="password"
               placeholder="Enter the Password"
               value={formValues.password}
               onChange={handleChange}
             />
-             <Link className="link"to={"/Email"}>Forgot password?</Link>            
+             <Link data-testid="Forgotpassword" className="link"to={"/Email"}>Forgot password?</Link>            
           </div>
           <p>{formErrors.password}</p>
-          <button className="fluid ui button blue">Login</button>
-          <h4 className="signupmsg"><Link className="link"to={"/Signup"}>New Retailer?</Link></h4>
+          <button data-testid="Loginbtn" className="fluid ui button blue">Login</button>
+          <h4 data-testid="Signuplink" className="signupmsg"><Link className="link"to={"/Signup"}>New Retailer?</Link></h4>
         </div>
       </form>
-      
     </div>
     </div>
     </> 
