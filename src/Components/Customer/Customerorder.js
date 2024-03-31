@@ -37,10 +37,12 @@ today.setDate(today.getDate()); // Add 5 days
 let month = String(today.getMonth() + 1).padStart(2, '0');
 let day = String(today.getDate()).padStart(2, '0');
 let dateString = today.getFullYear() + '-' + month + '-' + day;
+
+
 const Billid = "RZ" + uuid().slice(0, 8);
 const AutoBillid= useState(Billid);
 const [count,setcount]= useState(0);
- console.log(AutoBillid);
+console.log(AutoBillid);
   const [values, setValues] = useState({
     productsId: '',
     count: '',
@@ -66,6 +68,8 @@ const productsIdref=useRef();
     retailerid: Cookies.get("retailerid"),
   })
 
+
+  
   const handleProductview = (e) => {
     console.log(e.target.value);
     var result=e.target.value;

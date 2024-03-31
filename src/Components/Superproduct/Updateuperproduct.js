@@ -168,10 +168,9 @@ const handleImages=(e)=>{
           </div>
           <div className="field">
             <label>Description</label>
-            <input type="text" name="description" placeholder="Enter Description" value={values.productcode} onChange={e => setValues({ ...values, description: e.target.value })}/>
+            <input type="text" name="description" placeholder="Enter Description" value={values.description} onChange={e => setValues({ ...values, description: e.target.value })}/>
             <p ref={descriptionref}></p>
           </div>
-
           <div className="field">
             <label>ProductImage</label>
             <input type="file" multiple onChange={e=>handleImages(e)}/>

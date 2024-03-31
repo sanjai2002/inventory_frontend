@@ -125,17 +125,18 @@ function Signin() {
       errors.password = "Password cannot exceed more than 10 characters";
     }
     return errors;
-  };
-  return (  
-    <> 
+    };
 
+    return (  
+    <> 
     <div className="Nav">  
     </div>
     <div className="signinall">
     <div className="loginimage">
      <img  data-testid="Iventoryimg" src={Inventory} ></img>
      </div>
-     <div></div>
+     <div>
+     </div>
     <div className="container">
     <label ref={emailerrorr}></label>
       <form onSubmit={handleSubmit}>
@@ -152,7 +153,6 @@ function Signin() {
               value={formValues.email}
               onChange={handleChange}
             />
-
           </div>
           <p>{formErrors.email}</p>
           <div className="field">

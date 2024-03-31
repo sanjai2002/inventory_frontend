@@ -39,7 +39,7 @@ root.render(
     <Route path='/Signup' element={<Signup/>}></Route>
     <Route path='/Email' element={<Email/>}></Route>
     <Route path='/Updatepassword' element={<Updatepassword/>}></Route>
-   
+    
     <Route element={<Mainrouting/>}> 
     <Route path='/Home' element={<Home/>}></Route>
     <Route path='/Addproduct' element={<Addproduct />}></Route>
@@ -52,6 +52,7 @@ root.render(
     <Route path='/Purchasehistory' element={< Purchasehistory/>}></Route>
     <Route path='/Customerdetails' element={< Customerdetails/>}></Route>
     </Route>
+
     <Route element={<Adminrouting/>}>
     <Route path='/Addsuperproduct' element={<Addsuperproduct/>}></Route>
     <Route path='/Viewsuperproduct' element={<Viewsuperproduct/>}></Route>
@@ -59,6 +60,7 @@ root.render(
     <Route path='/Manageorders' element={<Manageorders/>}></Route>
     <Route path='/UpdateSuperproduct/:id' element={<UpdateSuperproduct/>}></Route>
     </Route>
+
   </Routes>
   </BrowserRouter>
 );

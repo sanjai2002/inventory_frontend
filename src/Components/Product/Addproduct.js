@@ -110,7 +110,6 @@ const handleImages=(e)=>{
     <form onSubmit={handleSubmit} className="add-product-form">
       <h1>Add the Product</h1>
       <div className="divider"></div>
-    
         <div className="ui divider"></div>
         <div className="ui form">
           <div className="field">
@@ -135,7 +134,7 @@ const handleImages=(e)=>{
             <input type="text" required name="description" placeholder="description" onChange={e => setValues({ ...values, description: e.target.value })}/>
             <p ref={ descriptionref}></p>
           </div>
-        
+      
           <div className="field">
             <label>ProductImage</label>
             <input type="file" required  multiple onChange={e=>handleImages(e)}/>
@@ -179,7 +178,7 @@ const handleImages=(e)=>{
           </div>    
           <button class="btn btn-primary" onClick={handleSubmit}>Add the Product</button>
         </div>
-      {/* ... rest of your form fields */}
+    
       
     </form>
   </div>

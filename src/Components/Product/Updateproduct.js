@@ -153,10 +153,8 @@ const handleImages=(e)=>{
             <label>ProductImage</label>
             <input type="file"multiple onChange={e=>handleImages(e)}/>
             <p ref={productImageref}></p>
- 
+
           </div>
-
-
           <div className="field">
             <label>Actual  Price</label>
             <div class="ui right labeled input">
@@ -185,8 +183,7 @@ const handleImages=(e)=>{
           <div className="field">
             <label>Stock</label>
             <div class="ui right labeled input">
-              <input type="number" min="1"  placeholder="stock"onChange={e => setValues({ ...values, stock: e.target.value })} />
-            
+              <input type="number" min="1"  placeholder="stock"onChange={e => setValues({ ...values, stock: e.target.value })} />  
            </div>
            Old Stock:{values.stock}
               <p ref={stockref}></p>

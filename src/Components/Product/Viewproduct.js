@@ -138,6 +138,7 @@ console.log(dateString1);
                 <td>{d.expiryDate}</td>
                 <td>{d.stock}</td>
                 <td><Link to={`/Updateproduct/${d.productsId}`} className="btn btn-primary m-2 ">Update</Link> </td>
+                
                 <td> <button onClick={e => Removeproduct(d.productsId)} type="button" class="btn btn-danger">Remove</button></td> 
               </tr></>   
           ))

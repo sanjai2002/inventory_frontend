@@ -23,8 +23,8 @@ function Navbar(){
     const [name,setName] = useState();
     const[Location,Setlocation]=useState();
     const[Shopname,Setshopname]=useState();
-  
     const[retailerid,setretailerid]=useState(Cookies.get("retailerid"));
+
     useEffect(()=>{
       axios.post('https://localhost:7282/api/Retailer/FindEmail',{
         email:Email
@@ -37,8 +37,10 @@ function Navbar(){
     setretailerid(res.data.retailerid);
 })
 
-  .catch(err => console.log(err));
+.catch(err => console.log(err));
     },[])
+
+
     //id store in cookies:
     Cookies.set('retailerid', retailerid, { expires: 7 });
     const Id=Cookies.get("retailerid");
